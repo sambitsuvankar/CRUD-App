@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from 'react'
+import { connect } from 'react-redux';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
-export default App;
+import HomePage from './pages/HomePage/Homepage';
+import Dashboard from './pages/dashboard/dashboard.page';
+
+import { selectCurrentUser } from './redux/user/user.selector'
+
+class App extends React.Component {
+  render(){
+
+    return (
+
+        <Switch>
+          <Route exact path='/' render= {()=> this.props.currentUser? (<Redirect to ='/dashboard'/>) : (<HomePage/>)} />
+          <Route exact path = '/dashboard' component={Dashboard}/>
+        </Switch>
+      
+    );
+  }
+  }
+
+  const mapStateToProps = state => ({
+    currentUser : selectCurrentUser(state)
+  })
+
+export default connect(mapStateToProps)(App);

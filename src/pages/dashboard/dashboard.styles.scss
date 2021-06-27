@@ -1,0 +1,23 @@
+.dashboard{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+
+    .dashboard-Container{
+        display: flex;
+    width: 75rem;
+    height: 50rem;
+    background-color: rgb(210, 221, 221);
+    flex-direction: row;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+    border-top: 1px  solid rgba(255,255,255,.3);
+    border-left: 1px  solid rgba(255,255,255,.3);
+    padding: 0 0; 
+    opacity: 0.8;
+    }
+    
+}

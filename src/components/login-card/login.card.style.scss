@@ -1,0 +1,224 @@
+.container{
+    display: flex;
+    width: 60rem;
+    height: 30rem;
+    // background-color: rgb(210, 221, 221);
+    flex-direction: row;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+    border-top: 1px  solid rgba(255,255,255,.3);
+    border-left: 1px  solid rgba(255,255,255,.3);
+    padding: 0 0; 
+
+
+    .bg-img{
+        background-image: url('../../assets/1.jpg');
+        height: 100%;
+        width: 50%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        border-radius: 0 10px 10px 0;
+    }
+    
+    .form-container{
+        height: 100%;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 10px 0 0 10px;
+
+        h3{
+            font-size: 30px;
+            padding: 30px 0;
+            color: #ccc;
+            letter-spacing: 3px;
+            font-family: 'Roboto', sans-serif;
+
+        }
+        button{
+            width: 50%;
+            margin-bottom: 10px;
+            height: 40px;
+            border-radius: 7px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content:first baseline;
+
+            
+
+            &.email{
+                background-color: rgb(221, 0, 0);
+                color: rgb(255, 254, 254);
+                font-family: 'Roboto' sans-serif;
+
+                &.hvr-radial-out {
+                    // display: inline-block;
+                    vertical-align: middle;
+                    -webkit-transform: perspective(1px) translateZ(0);
+                    transform: perspective(1px) translateZ(0);
+                    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                    position: relative;
+                    overflow: hidden;
+                    // background: rgb(221, 0, 0);;
+                    -webkit-transition-property: color;
+                    transition-property: color;
+                    -webkit-transition-duration: 0.3s;
+                    transition-duration: 0.3s;
+    
+                    &:before {
+                      content: "";
+                      position: absolute;
+                      z-index: -1;
+                      top: 0;
+                      left: 0;
+                      right: 0;
+                      bottom: 0;
+                      background: rgb(255, 19, 19);;
+                      border-radius: 100%;
+                      -webkit-transform: scale(0);
+                      transform: scale(0);
+                      -webkit-transition-property: transform;
+                      transition-property: transform;
+                      -webkit-transition-duration: 0.3s;
+                      transition-duration: 0.3s;
+                      -webkit-transition-timing-function: ease-out;
+                      transition-timing-function: ease-out;
+                    }
+                    &:hover, &:focus, &:active {
+                      color: white;
+                    }
+                    &:hover:before, &:focus:before, &:active:before {
+                      -webkit-transform: scale(2);
+                      transform: scale(2);
+                    }
+                  }
+            }
+            &.google{
+                background-color: rgb(255, 255, 255);
+                color: rgb(54, 54, 54);
+                font-family: 'Roboto' sans-serif;
+
+                &.hvr-radial-out {
+                    // display: inline-block;
+                    vertical-align: middle;
+                    -webkit-transform: perspective(1px) translateZ(0);
+                    transform: perspective(1px) translateZ(0);
+                    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                    position: relative;
+                    overflow: hidden;
+                    // background: rgb(221, 0, 0);;
+                    -webkit-transition-property: color;
+                    transition-property: color;
+                    -webkit-transition-duration: 0.3s;
+                    transition-duration: 0.3s;
+    
+                    &:before {
+                      content: "";
+                      position: absolute;
+                      z-index: -1;
+                      top: 0;
+                      left: 0;
+                      right: 0;
+                      bottom: 0;
+                      background: rgb(54, 54, 54);;
+                      border-radius: 100%;
+                      -webkit-transform: scale(0);
+                      transform: scale(0);
+                      -webkit-transition-property: transform;
+                      transition-property: transform;
+                      -webkit-transition-duration: 0.3s;
+                      transition-duration: 0.3s;
+                      -webkit-transition-timing-function: ease-out;
+                      transition-timing-function: ease-out;
+                    }
+                    &:hover, &:focus, &:active {
+                      color: white;
+                    }
+                    &:hover:before, &:focus:before, &:active:before {
+                      -webkit-transform: scale(2);
+                      transform: scale(2);
+                    }
+                  }
+            }
+            &.phone{
+                background-color: rgb(44, 202, 44);
+                color: rgb(255, 254, 254);
+                font-family: 'Roboto' sans-serif;
+
+                &.hvr-radial-out {
+                    // display: inline-block;
+                    vertical-align: middle;
+                    -webkit-transform: perspective(1px) translateZ(0);
+                    transform: perspective(1px) translateZ(0);
+                    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                    position: relative;
+                    overflow: hidden;
+                    // background: rgb(221, 0, 0);;
+                    -webkit-transition-property: color;
+                    transition-property: color;
+                    -webkit-transition-duration: 0.3s;
+                    transition-duration: 0.3s;
+    
+                    &:before {
+                      content: "";
+                      position: absolute;
+                      z-index: -1;
+                      top: 0;
+                      left: 0;
+                      right: 0;
+                      bottom: 0;
+                      background: rgb(97, 221, 25);;
+                      border-radius: 100%;
+                      -webkit-transform: scale(0);
+                      transform: scale(0);
+                      -webkit-transition-property: transform;
+                      transition-property: transform;
+                      -webkit-transition-duration: 0.3s;
+                      transition-duration: 0.3s;
+                      -webkit-transition-timing-function: ease-out;
+                      transition-timing-function: ease-out;
+                    }
+                    &:hover, &:focus, &:active {
+                      color: white;
+                    }
+                    &:hover:before, &:focus:before, &:active:before {
+                      -webkit-transform: scale(2);
+                      transform: scale(2);
+                    }
+                  }
+            }
+            .logoEmail{
+                background-image: url(../../assets/email.png);
+                width: 10%;
+                height: 100%;
+                background-size: 80%;
+                background-position: center;
+                background-repeat: no-repeat;
+                margin-right: 15%;
+            }
+            .logoGoogle{
+                background-image: url(../../assets/google.png);
+                width: 10%;
+                height: 100%;
+                background-size: 80%;
+                background-position: center;
+                background-repeat: no-repeat;
+                margin-right: 15%;
+            }
+            .logoPhone{
+                background-image: url(../../assets/phone.png);
+                width: 10%;
+                height: 100%;
+                background-size: 80%;
+                background-position: center;
+                background-repeat: no-repeat;
+                margin-right: 15%;
+            }
+        }
+    }
+}

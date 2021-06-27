@@ -1,0 +1,59 @@
+$sub-color: grey;
+$main-color: rgb(235, 235, 235);
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+@mixin shrinkLabel {   // @mixin shrinklabel {} is a block of css code which we can add anywhere in the css by writing @include shrinklabel(). Basically it makes that block of css code reusable.
+    top: -10px;
+    font-size: 12px;
+    color: $main-color;
+}
+
+.group{
+    position: relative;
+    margin: 5px 0;
+    width: 50%;
+
+    .form-input {
+        background: none;
+        background-color: rgb(204, 204, 204);
+        color: $sub-color;
+        font-size: 18px;
+        padding: 10px 10px 10px 10px;
+        display: block;
+        width: 100%;
+        border: none;
+        border-radius: 7px;
+        border-bottom: 1px solid $sub-color;
+        margin: 15px 0;
+
+        &:focus{
+            outline: none;
+        }
+
+        &:focus ~ .form-input-label {
+            @include shrinkLabel()
+        }
+    }
+
+    input[type = 'password'] {
+        letter-spacing: 0.3em;
+    }
+
+    .form-input-label{
+        color: $sub-color;
+        font-size: 16px;
+        font-weight: normal;
+        font-family: 'Roboto' sans-serif;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 25px;
+        transition: 300ms ease all;
+
+        &.shrink{
+            @include shrinkLabel();
+        }
+    }
+}
