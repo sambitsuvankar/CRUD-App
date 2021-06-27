@@ -1,13 +1,14 @@
 .header{
     width: 100%;
     height: 20%;
-    background-color: rgb(109, 108, 107);
-    opacity: 1;
+    background-color: #DBE6FD;
+    opacity: 10;
     border-radius: 10px 10px 0 0;
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
+    padding: 0 ;
     justify-content: space-between;
+    position: sticky;
 
     .title{
         width: 100%;
@@ -15,39 +16,96 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: 0 20px;
 
         span{
             font-family: 'Roboto' sans-serif;
-            color: rgb(253, 245, 245);
+            color: #47597E;
             font-size: 2rem;
         }
         .logout{
             height: 2rem;
             width: 2rem;
-            color: white;
+            color: #47597E;
             cursor: pointer;
             &:hover{
-                color: red;
+                color: rgb(201, 48, 48);
             }
+        }
+        .addUser{
+            height: 2rem;
+            width: 2rem;
+            cursor: pointer;
+            position: absolute;
+            right: 4.5rem;
+            color: #47597E;
+            &:hover{
+                color: rgb(77, 211, 15);
+            }
+        }
+    }
+
+    .tileHeading{
+        width: 100%;
+        height : 25%;
+        border-radius: 5px;
+        background-color: #47597E;
+        color: #DBE6FD;
+        margin-top: 5px;
+        display: grid;
+        margin-top: 3rem;
+        grid-template-columns: 5% 28% 28% 28% auto auto;
+        transition: all 1s ease-in-out;
+        &.hidden{
+            display: none;
+            height: 0%;
+            transition: all 1s ease-in-out;
+        }
+        
+        .tileSection{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Roboto', sans-serif;
         }
     }
 
     .form{
         display: flex;
+        padding: 0 20px;
         align-items: flex-start;
         padding-bottom: 20px;
+        width: 100%;
+        height: 40%;
+        opacity: 1;
+        transition: all 500ms ease-in-out;
+        
+        &.hidden {
+            height: 0%;
+            opacity: 0;
+            transition: all 500ms ease-in-out;
+        }
 
         .input-group{
             width: 27%;
             margin-right: 2rem;
+            
+            .form-control{
+                background-color: #47597E;
+                color: #EDEDED;
+            }
+            .form-control::placeholder{
+                color: #EDEDED;
+            }
+
         }
         .save{
             height: 2rem;
             width: 2rem;
-            color: white;
             cursor: pointer;
+            color: #47597E;
             &:hover{
-                color: rgb(51, 255, 0);
+                color: rgb(77, 211, 15);
             }
         }
     }

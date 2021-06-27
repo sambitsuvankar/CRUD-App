@@ -8,6 +8,8 @@ const UserActionTypes = {
     SIGN_OUT_SUCCESS : 'SIGN_OUT_SUCCESS',
     SIGN_OUT_FAILURE : 'SIGN_OUT_FAILURE',
     SIGN_UP_START : 'SIGN_UP_START',
+    TOGGLE_FORM  : 'TOGGLE_FORM',
+    TEXT_FIELD_TOGGLE : 'TEXT_FIELD_TOGGLE'
 }
 
 export default UserActionTypes;

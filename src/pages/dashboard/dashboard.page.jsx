@@ -1,5 +1,5 @@
 import React from 'react'
-import dashboardForm from '../../components/dashboard-component/dashboard-form-component';
+import DashboardForm from '../../components/dashboard-component/dashboard-form-component';
 import Header from '../../components/header/header-component';
 import './dashboard.styles.scss'
 import firebase from '../../firebase/firebase.utils'
@@ -7,19 +7,24 @@ import firebase from '../../firebase/firebase.utils'
 const Dashboard = () => {
 
     function writeUserData({fullName, email, phoneNumber}) {
-        firebase.database().ref('users/').set({
-          fullName: fullName,
-          email: email,
-          phoneNumber : phoneNumber
-        });
+        const dashDB = firebase.database().ref('/dashboard')
+        let data = {
+            fullName : fullName,
+            email: email,
+            phoneNumber: phoneNumber
+        }
+        dashDB.push(data)
       }
     
+    // function handleUpdateUser(){
+        
+    // }
 
     return(
         <div className='dashboard'>
             <div className='dashboard-Container'>
                 <Header writeUserData={writeUserData}/>
-                <dashboardForm/>
+                <DashboardForm/>
             </div>
         </div>
     )

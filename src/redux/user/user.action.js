@@ -27,3 +27,11 @@ export const signOutSuccess = () => ({
 export const signOutFailure = () => ({
     type : UserActionTypes.SIGN_OUT_FAILURE
 })
+
+export const toggleForm = () => ({
+    type: UserActionTypes.TOGGLE_FORM
+})
+
+export const toogleTextField = () =>({
+    type : UserActionTypes.TEXT_FIELD_TOGGLE
+})

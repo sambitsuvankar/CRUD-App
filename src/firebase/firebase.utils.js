@@ -2,6 +2,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import "firebase/database";
 
 
 
@@ -18,8 +19,6 @@ const Config = {
   };
 
 firebase.initializeApp(Config);
-const dashDB = firebase.database().ref().child('object')
-        dashDB.on('value', snap => console.log(snap.val()))
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();

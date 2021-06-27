@@ -37,7 +37,6 @@ const Logincard = ({googleSigninStart, emailSigninStart}) => {
 
                     <button type='submit'  className='email hvr-radial-out'><div className='logoEmail'/>Sign in with Email</button>
                     <button type='button' onClick={googleSigninStart} className='google hvr-radial-out'><div className='logoGoogle' />Google Account</button>
-                    <button type='button' className='phone hvr-radial-out'><div className='logoPhone'/>Phone number</button>
                 </form>
                 <div className='bg-img'/>
         </div>

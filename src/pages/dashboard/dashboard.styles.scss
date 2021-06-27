@@ -7,17 +7,21 @@
     width: 100vw;
 
     .dashboard-Container{
-        display: flex;
+    display: flex;
     width: 75rem;
     height: 50rem;
-    background-color: rgb(210, 221, 221);
-    flex-direction: row;
+    position: absolute;
+    // background-color: rgb(92, 100, 100);
+    flex-direction: column;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
     border-top: 1px  solid rgba(255,255,255,.3);
     border-left: 1px  solid rgba(255,255,255,.3);
     padding: 0 0; 
-    opacity: 0.8;
+    background-color: rgba(130, 235, 243, 0.534);
+    backdrop-filter: blur(10px);
+    
+    
     }
     
 }

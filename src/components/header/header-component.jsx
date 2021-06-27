@@ -2,18 +2,19 @@ import React, {useState} from 'react'
 import './header-component-styles.scss';
 import { MdInput } from "react-icons/md";
 import { FaSave } from "react-icons/fa";
+import { AiOutlineUserAdd } from "react-icons/ai"
 
 import {  Redirect } from 'react-router-dom';
 
 import {connect} from 'react-redux';
-import { signOutSuccess } from '../../redux/user/user.action';
-import { selectCurrentUser } from '../../redux/user/user.selector';
+import { signOutSuccess, toggleForm } from '../../redux/user/user.action';
+import { selectCurrentUser, selectToggleAction } from '../../redux/user/user.selector';
 // import firebase from '../../firebase/firebase.utils';
-import firebase from 'firebase/app'
 
 
 
-const Header = ({signOutSuccess,currentUser, writeUserData})=> {
+
+const Header = ({signOutSuccess,currentUser, writeUserData, toggleForm, toggleAction})=> {
 
     const initialFieldValues = {
         fullName : '',
@@ -22,14 +23,10 @@ const Header = ({signOutSuccess,currentUser, writeUserData})=> {
     }
 
     const [values, setValues] = useState(initialFieldValues);
+////////////////////////////////////////////////////
+    
 
-    // const handleAddUser = () => {
-    //     const todoRef = firebase.database().ref('dashboard/' + currentUser.id);
-    //     todoRef.set({...values})
-
-    // }
-
-
+//////////////////////////////////////////////////
     const handleChange = (e) => {
         const {value, name} = e.target;
         
@@ -37,34 +34,47 @@ const Header = ({signOutSuccess,currentUser, writeUserData})=> {
             ...values,
             [name] : value
         })
-        console.log(values)
+        
     }
-
+//////////////////////////////////////////
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (!values.fullName || !values.email || !values.phoneNumber) return;
         writeUserData({
             ...values
         })
+        toggleForm()
     }
-    console.log(currentUser)
+//////////////////////////////////////
     return(
         <div className='header'>
             <div className='title'>
                 <span>Dashboard</span>
-                <span>{`Welcome ${currentUser.displayName}`}</span>
+                {
+                    currentUser ? (<span>{`Welcome ${currentUser.displayName}`}</span>) : ("")
+                }
+                <AiOutlineUserAdd className='addUser' onClick={toggleForm}/>
                 {
                     currentUser ? (<MdInput className='logout' alt='logouut' onClick={signOutSuccess}/>) : (<Redirect to ='/' />)
                 }
             </div>
-            <form className='form'>
-                <div class="input-group flex-nowrap">
-                    <input name='fullName' type="text"  class="form-control" placeholder="Full name" aria-label="Username" aria-describedby="addon-wrapping" onChange={handleChange}/>
+            <div className={`${toggleAction ? `hidden` : ``} tileHeading`}>
+                <div className='tileSection'>Sl No.</div>
+                <div className='tileSection'>FULL NAME</div>
+                <div className='tileSection'>EMAIL ADDRESS</div>
+                <div className='tileSection'>PHONE NUMBER</div>
+                <div className='tileSection'>EDIT</div>
+                <div className='tileSection'>DELETE</div>
+            </div>
+            <form className={`${toggleAction ? `` : `hidden`} form`}>
+                <div className="input-group flex-nowrap">
+                    <input name='fullName' type="text"  className="form-control" placeholder="Full name" aria-label="Username" aria-describedby="addon-wrapping" onChange={handleChange}/>
                 </div>
-                <div class="input-group flex-nowrap">
-                    <input name='email' type="email"  class="form-control" placeholder="@email address" aria-label="Username" aria-describedby="addon-wrapping" onChange={handleChange}/>
+                <div className="input-group flex-nowrap">
+                    <input name='email' type="email"  className="form-control" placeholder="@email address" aria-label="Username" aria-describedby="addon-wrapping" onChange={handleChange}/>
                 </div>
-                <div class="input-group flex-nowrap">
-                    <input name='phoneNumber' type="number"  class="form-control" placeholder="Phone number" aria-label="Username" aria-describedby="addon-wrapping" onChange={handleChange}/>
+                <div className="input-group flex-nowrap">
+                    <input name='phoneNumber' type="number"  className="form-control" placeholder="Phone number" aria-label="Username" aria-describedby="addon-wrapping" onChange={handleChange}/>
                 </div>
                 <FaSave type='submit' onClick={handleSubmit} className='save'/>
             </form>
@@ -74,11 +84,13 @@ const Header = ({signOutSuccess,currentUser, writeUserData})=> {
 }
 
 const mapStateToProps = (state) => ({
-    currentUser : selectCurrentUser(state)
+    currentUser : selectCurrentUser(state),
+    toggleAction : selectToggleAction(state)
 })
 
 const mapDispatchToProps= (dispatch) => ({
-    signOutSuccess : () => dispatch(signOutSuccess())
+    signOutSuccess : () => dispatch(signOutSuccess()),
+    toggleForm : () => dispatch(toggleForm())
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)( Header );
