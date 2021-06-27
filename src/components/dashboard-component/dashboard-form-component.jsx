@@ -56,10 +56,16 @@ const DashboardForm = ({selectToogleTextField})=> {
 
 
     ///////////////////////////////////////////////////////
+
+    const handleDelete = (id) => {
+        const firestore = firebase.database().ref('/dashboard').child(id);
+        firestore.remove()
+    }
+    ///////////////////////////////////////////////////////
     return(
         <div className='userSection'>
         {
-            userData.map( (data, i) => (<UserComponent index={i+1} data={data} handleEditData={handleEditData}/>))
+            userData.map( (data, i) => (<UserComponent index={i+1} data={data} handleEditData={handleEditData} handleDelete={handleDelete}/>))
         }
         {
             selectToogleTextField ? (<Popup editData={editData}/>) : (null)

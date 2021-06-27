@@ -34,4 +34,8 @@ export const toggleForm = () => ({
 
 export const toogleTextField = () =>({
     type : UserActionTypes.TEXT_FIELD_TOGGLE
-})
+});
+
+export const checkUserSession = () => ({
+    type: UserActionTypes.CHECK_USER_SESSION
+});

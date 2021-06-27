@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto:wght@500&display=swap');
+
 .backpopup{
     width: 100%;
     height: 100%;
@@ -27,6 +29,14 @@
         }
         .input-group{
             padding: 20px;
+
+            .form-control{
+                background-color: #47597E;
+                color: #EDEDED;
+            }
+            .form-control::placeholder{
+                color: #EDEDED;
+            }
         }
         .cross{
             position: absolute;
@@ -37,6 +47,14 @@
             &:hover{
                 color: rgb(255, 0, 0);
             }
+        }
+        .submitBtn{
+            width: 10rem;
+            height: 3rem;
+            background-color: rgb(233, 88, 4);
+            border-radius: 5px;
+            color: honeydew;
+            font-family: 'Roboto' sans-serif;
         }
     }
 }

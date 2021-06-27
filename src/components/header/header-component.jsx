@@ -43,7 +43,7 @@ const Header = ({signOutSuccess,currentUser, writeUserData, toggleForm, toggleAc
         writeUserData({
             ...values
         })
-        toggleForm()
+        toggleForm();
     }
 //////////////////////////////////////
     return(
@@ -51,7 +51,7 @@ const Header = ({signOutSuccess,currentUser, writeUserData, toggleForm, toggleAc
             <div className='title'>
                 <span>Dashboard</span>
                 {
-                    currentUser ? (<span>{`Welcome ${currentUser.displayName}`}</span>) : ("")
+                    currentUser ? (<span>{`Welcome ${currentUser.displayName}`}</span>) : (null)
                 }
                 <AiOutlineUserAdd className='addUser' onClick={toggleForm}/>
                 {
@@ -68,13 +68,13 @@ const Header = ({signOutSuccess,currentUser, writeUserData, toggleForm, toggleAc
             </div>
             <form className={`${toggleAction ? `` : `hidden`} form`}>
                 <div className="input-group flex-nowrap">
-                    <input name='fullName' type="text"  className="form-control" placeholder="Full name" aria-label="Username" aria-describedby="addon-wrapping" onChange={handleChange}/>
+                    <input name='fullName' type="text" defaultValue={initialFieldValues.fullName}  className="form-control" placeholder="Full name" aria-label="Username" aria-describedby="addon-wrapping" onChange={handleChange}/>
                 </div>
                 <div className="input-group flex-nowrap">
-                    <input name='email' type="email"  className="form-control" placeholder="@email address" aria-label="Username" aria-describedby="addon-wrapping" onChange={handleChange}/>
+                    <input name='email' type="email" defaultValue={initialFieldValues.email}  className="form-control" placeholder="@email address" aria-label="Username" aria-describedby="addon-wrapping" onChange={handleChange}/>
                 </div>
                 <div className="input-group flex-nowrap">
-                    <input name='phoneNumber' type="number"  className="form-control" placeholder="Phone number" aria-label="Username" aria-describedby="addon-wrapping" onChange={handleChange}/>
+                    <input name='phoneNumber' type="number" defaultValue={initialFieldValues.phoneNumber}  className="form-control" placeholder="Phone number" aria-label="Username" aria-describedby="addon-wrapping" onChange={handleChange}/>
                 </div>
                 <FaSave type='submit' onClick={handleSubmit} className='save'/>
             </form>

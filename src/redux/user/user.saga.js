@@ -1,7 +1,7 @@
 import { takeLatest , put, all, call } from 'redux-saga/effects';
 
 import UserActionTypes from './user.types';
-import { auth, googleProvider, createUserProfileDocument,  } from '../../firebase/firebase.utils';
+import { auth, googleProvider, createUserProfileDocument, getCurrentUser } from '../../firebase/firebase.utils';
 
 import { signInSuccess, signInFailure, signOutSuccess, signOutFailure } from './user.action'
 
@@ -58,6 +58,25 @@ export function* signOut(){
 
 export function* onSignOutStart(){
     yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut )
+}
+
+export function* isUserAuthenticated(){
+    try{
+        const userAuth = yield getCurrentUser();          // The 'getCurrentUser()' function from 'firebase.utils' return the 'userAuth' Object.
+
+        if(!userAuth) return;    // if the 'userAuth' object is null that means user signed out then it will immidiately return.
+
+        const userRef = yield call(createUserProfileDocument,userAuth);       // But if the 'userAuth' exists then it will save as the current user.
+        const userSnapShot = yield userRef.get();
+        yield put(signInSuccess({ id: userSnapShot.id, ...userSnapShot.data() }))
+    }catch(error){
+        yield put(signInFailure(error));
+    }
+}
+
+
+export function* onCheckUserSession(){
+    yield takeLatest(UserActionTypes.CHECK_USER_SESSION, isUserAuthenticated)
 }
 
 export function* userSaga(){

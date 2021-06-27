@@ -8,8 +8,21 @@ import HomePage from './pages/HomePage/Homepage';
 import Dashboard from './pages/dashboard/dashboard.page';
 
 import { selectCurrentUser } from './redux/user/user.selector'
+import { checkUserSession } from  './../src/redux/user/user.action'
 
 class App extends React.Component {
+
+  unSubscribeFromAuth = null;
+
+  componentDidMount(){
+    const {checkUserSession} = this.props
+    checkUserSession()
+  }
+
+  componentWillUnmount(){
+    this.unSubscribeFromAuth()
+  }
+
   render(){
 
     return (
@@ -24,7 +37,11 @@ class App extends React.Component {
   }
 
   const mapStateToProps = state => ({
-    currentUser : selectCurrentUser(state)
+    currentUser : selectCurrentUser(state),
+    
+  })
+  const mapDispatchToProps = dispatch => ({
+    checkUserSession : () =>(dispatch(checkUserSession()))
   })
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);

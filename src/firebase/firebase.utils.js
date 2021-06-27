@@ -55,3 +55,14 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
     return userRef;
 }
+
+
+/////////////////////////////////////////////////////////////////
+export const getCurrentUser = () => {
+    return new Promise((resolve,reject) => {
+        const unsubscribe = auth.onAuthStateChanged(userAuth => {   // this will return a signed in user data as an Object 'userAuth'
+            unsubscribe();
+            resolve(userAuth);
+        }, reject)
+    })
+}

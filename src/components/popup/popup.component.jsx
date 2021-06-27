@@ -2,7 +2,7 @@ import React ,{ useState } from 'react'
 import './popup.styles.scss'
 import {FaTimesCircle } from "react-icons/fa"
 
-import ContainedButtons from '../button/button.component'
+
 import { connect } from 'react-redux'
 import { toogleTextField } from '../../redux/user/user.action';
 import firebase from 'firebase/app'
@@ -41,16 +41,16 @@ const Popup = (props)=> {
                 <FaTimesCircle className='cross' onClick={toogleTextField}/>
                 <div className='group-form'>
                     <div className="input-group flex-nowrap">
-                        <input name='fullName' type="text"   className="form-control" placeholder="Full name" aria-label="Username" aria-describedby="addon-wrapping"  onChange={(e) => {setfullName(e.target.value)}}/>
+                        <input name='fullName' type="text" defaultValue={editData.fullName}  className="form-control" placeholder="Full name" aria-label="Username" aria-describedby="addon-wrapping"  onChange={(e) => {setfullName(e.target.value)}}/>
                     </div>
                     <div className="input-group flex-nowrap">
-                        <input name='phoneNumber' type="number"  className="form-control" placeholder="Phone number" aria-label="Username" aria-describedby="addon-wrapping" onChange={(e) => {setPhone(e.target.value)}}/>
+                        <input name='phoneNumber' type="number" defaultValue={editData.phoneNumber} className="form-control" placeholder="Phone number" aria-label="Username" aria-describedby="addon-wrapping" onChange={(e) => {setPhone(e.target.value)}}/>
                     </div>
                 </div>
                 <div className="input-group flex-nowrap">
-                    <input name='email' type="email"   className="form-control" placeholder="@email address" aria-label="Username" aria-describedby="addon-wrapping" onChange={(e) => {setEmail(e.target.value)}}/>
+                    <input name='email' type="email"  defaultValue={editData.email} className="form-control" placeholder="@email address" aria-label="Username" aria-describedby="addon-wrapping" onChange={(e) => {setEmail(e.target.value)}}/>
                 </div>
-                <ContainedButtons onClick={()=> {handleUpdate();toogleTextField()}}/>
+                <button className='submitBtn' onClick={()=> {handleUpdate(); toogleTextField()}}>SAVE THIS EDIT</button>
             </div>
         </div>
     )
