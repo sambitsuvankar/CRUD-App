@@ -1,15 +1,15 @@
 import { takeLatest , put, all, call } from 'redux-saga/effects';
 
 import UserActionTypes from './user.types';
-import { auth, googleProvider, createUserProfileDocument, getCurrentUser } from '../../firebase/firebase.utils';
+import { auth,  createUserProfileDocument, getCurrentUser, signInWithGoogle } from '../../firebase/firebase.utils';
 
 import { signInSuccess, signInFailure, signOutSuccess, signOutFailure } from './user.action'
 
 
 
-export function* signInWithGoogle(){
+export function* googleSignin(){
     try{
-        const { user } = yield auth.signInWithPopup(googleProvider );     
+        const { user } = yield signInWithGoogle();     
         console.log(user)
         
         const userRef = yield call(createUserProfileDocument,user)      
@@ -24,7 +24,7 @@ export function* signInWithGoogle(){
 }
 
 export function* onGoogleSignInStart(){
-    yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle )   
+    yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, googleSignin )   
 };
 
 // Email sign in Process
